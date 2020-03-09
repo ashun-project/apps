@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>宅易宝</title>
+  <link rel="stylesheet" href="./static/css/mui.min.css">
+  <link rel="stylesheet" href="./static/css/home.css">
+  <link rel="stylesheet" href="./static/fonts/fonts.css">
+  <script src="./static/js/ios_app.js"></script>
+</head>
+<body>
+  <div class="mui-content">
+    <!-- header search -->
+    <header id="header" class="mui-bar mui-bar-nav">
+			<div class="mui-input-row mui-search">
+        <!-- <input type="search" class="mui-input-clear" placeholder="" data-input-clear="1" data-input-search="1"><span class="mui-icon mui-icon-clear mui-hidden"></span><span class="mui-placeholder"><span class="mui-icon mui-icon-search"></span><span></span></span> -->
+        <input type="text" class="search-input" placeholder="今日热门">
+        <span class="left-icon iconfont">&#xe60f;</span>
+      </div>
+      <a href="./history_download.html" class="mui-pull-right iconfont">&#xe639;</a>
+    </header>
+    <!-- header search -->
+
+    <!-- main -->
+    <div id="main" class="main">
+      <!-- classify -->
+      <div class="classify-wrap">
+        <div>
+          <a href="./list.html?type=1">
+            <i class="qipai iconfont">&#xe60b;</i>
+            <span>棋牌</span>
+          </a>
+        </div>
+        <div>
+          <a href="./list.html?type=2">
+            <i class="youxi iconfont">&#xe60a;</i>
+            <span>游戏</span>
+          </a>
+        </div>
+        <div>
+          <a href="./list.html?type=3">
+            <i class="xiaoshuo iconfont">&#xe664;</i>
+            <span>小说</span>
+          </a>
+        </div>
+        <div>
+          <a href="./list.html?type=4">
+            <i class="shiping iconfont">&#xe78e;</i>
+            <span>视频</span>
+          </a>
+        </div>
+        <div>
+          <a href="./list.html?type=5">
+            <i class="zhibo iconfont">&#xe626;</i>
+            <span>直播</span>
+          </a>
+        </div>
+        <div>
+          <a href="./list.html?type=6">
+            <i class="qita iconfont">&#xe619;</i>
+            <span>其他</span>
+          </a>
+        </div>
+      </div>
+      <!-- classify -->
+      <!-- banner -->
+      <div id="slider" class="mui-slider" >
+        <div class="mui-slider-group mui-slider-loop">
+          <!-- 轮播图的内容 -->
+        </div>
+        <div class="mui-slider-indicator">
+          <!-- 轮播图的圆点 -->
+        </div>
+      </div>
+      <!-- banner -->
+
+      <!-- 排名第一的应用 -->
+      <ul class="mui-table-view mui-table-view-chevron number-one" style="margin: 10px 0">
+      </ul>
+       <!-- 排名第一的应用 -->
+
+      <!-- hot -->
+      <div class="hot-app-wrap of-hd">
+        <h2>热门应用</h2>
+        <div class="hot-apps">
+          <!-- APP内容 -->
+        </div>
+      </div>
+      <!-- hot -->
+
+      <!-- 首页列表 -->
+      <ul class="mui-table-view mui-table-view-chevron index-list" style="margin-top: 10px">
+        <!-- 列表内容 -->
+			</ul>
+      <!-- 首页列表 -->
+    </div>
+    <!-- main -->
+
+    <!-- bottom navbar -->
+    <nav class="mui-bar mui-bar-tab footer">
+      <a class="mui-tab-item mui-active" href="./">
+        <i class="mui-icon iconfont">&#xe609;</i>
+        <span class="mui-tab-label">首页</span>
+      </a>
+      <a class="mui-tab-item" href="./">
+        <i class="mui-icon iconfont">&#xe6d7;</i>
+        <span class="mui-tab-label">发现</span>
+      </a>
+      <a class="mui-tab-item paihang" href="./">
+        <i class="mui-icon iconfont">&#xea76;</i>
+        <span class="mui-tab-label">排行榜</span>
+      </a>
+      <a class="mui-tab-item" href="./collect.html">
+        <i class="mui-icon iconfont">&#xe618;</i>
+        <span class="mui-tab-label">收藏</span>
+      </a>
+    </nav>
+    <!-- bottom navbar -->
+  </div>
+  <script src="./static/js/mui.min.js"></script>
+  <script src="./static/js/ajax.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/download.js"></script>
+</body>
+</html>

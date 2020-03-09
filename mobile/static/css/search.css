@@ -1,0 +1,274 @@
+#header{
+  display: flex;
+  padding: 10px;
+  height: 55px;
+  border-bottom: 1px solid #eee;
+}
+#header .mui-icon{
+  padding: 0 20px 0 8px;
+  line-height: 34px;
+}
+#header .head-icon{
+  font-size: 26px;
+}
+#header .mui-search {
+  flex: 1;
+  box-sizing: border-box;
+  position: relative;
+  background: #e6e6e6;
+  border-radius: 3px;
+}
+#header .search-input{
+  border: 0;
+  background-color: rgba(230, 230, 230, 0);
+  padding: 10px 10px 10px 40px;
+  line-height: 20px;
+  font-weight: 500;
+  height: 100%;
+  font-size: 14px;
+  caret-color: #007aff;
+}
+#header .mui-search .left-icon{
+  position: absolute;
+  left: 10px;
+  height: 30px;
+  font-size: 22px;
+  top: 7px;
+  color: #8f8f8f;
+}
+#search-data{
+  padding-left: 10px;
+  font-size: 16px;
+  color: #007aff;
+  line-height: 34px;
+}
+
+.hot-app-wrap {
+  background: white;
+  padding-bottom: 20px;
+  min-height: 160px;
+  margin-top: 10px;
+}
+.hot-app-wrap h2 {
+  padding: 20px 0 15px 10px;
+  align-items: center;
+  font-size: 15px;
+}
+.hot-apps{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+.hot-apps .item{
+  /* width: 25%; */
+}
+.hot-apps .item a{
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.hot-apps .item img{
+  width: 80%;
+  max-width: 60px;
+  margin-left: 10%;
+  border-radius: 6px;
+}
+.hot-apps .item span{
+  font-size: 12px;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  max-width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hot-apps .item span.download{
+  color: #007aff;
+  font-weight: normal;
+}
+.hot-apps .item .primary-button{
+  width: 46px;
+  height: 24px;
+  line-height: 24px;
+  padding: 0px;
+  font-size: 12px;
+  margin: 0 auto;
+}
+
+/* 搜索历史 */
+.history-cont {
+  background: #fff;
+  padding-top: 10px;
+}
+.history-list{
+  line-height: 40px;
+  padding: 0 10px;
+}
+.history-list li{
+  height: 40px;
+  color: rgb(70, 69, 69);
+  font-size: 16px;
+  position: relative;
+  padding: 0 17px 0 16px;
+}
+.history-list li:last-child::after{
+  /* height: 0; */
+}
+.history-list li::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  background: #eee;
+}
+/* .history-list li:active{
+  background: #eee;
+} */
+.history-list li .time-icon{
+  font-size: 16px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.history-list li .delete-icon{
+  font-size: 12px;
+  color: rgb(73, 73, 73);
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+.history-list li .delete-icon:active{
+  color: #777777;
+}
+.history-list li span{
+  display: block;
+  padding: 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  width: 100%;
+}
+.history-list li span:active{
+  background-color: #eee;
+}
+.history-list li.no-data{
+  height: 50px;
+}
+.history-list li.no-data::after{
+  height: 0;
+}
+.history-list li.no-data span{
+  text-align: center;
+  max-width: 100%;
+  color: #8f8f8f;
+}
+.clear-history{
+  text-align: center;
+  color: #565656;
+  font-size: 14px;
+  padding: 20px 0;
+  display: none;
+}
+
+
+/* 搜索结果列表 */
+.search-cont{
+  display: none;
+}
+.list-table:after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 15px;
+  height: 1px;
+  content: "";
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background-color: #e8e4e4;
+}
+.mui-table-view:before, .mui-table-view::after,.list-table:last-child:after{
+  height: 0;
+}
+.mui-table-view .list-table{
+  transform-style: preserve-3d;
+  overflow: hidden;
+  position: relative;
+  padding: 11px 15px;
+  padding-right: 65px;
+}
+.mui-table-view .list-table:active{
+  background: #eee;
+}
+.mui-table-view .list-table:active{
+  background-color: #eee;
+}
+.mui-table-view .list-table a.a-cont{
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: -11px -15px;
+  padding: inherit;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: inherit;
+  margin-right: -65px;
+}
+.mui-table-view .list-table h3{
+  font-size: 15px;
+}
+.mui-table-view .list-table .mui-media-body i{
+  font-size: 12px;
+  font-style: normal;
+  color: #9c9c9c;
+  line-height: 20px;
+  display: block;
+}
+.mui-table-view .list-table p{
+  font-size: 14px;
+  color: #4f4f4f;
+  margin-bottom: 0;
+  overflow: hidden;
+    white-space: nowrap;
+}
+.mui-table-view .list-table img{
+  height: 60px;
+  width: 60px;
+  max-width: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-top: 2px;
+  margin-right: 10px;
+  line-height: 42px;
+  float: left;
+  background-color: #fff;
+}
+.mui-table-view .list-table .primary-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 46px;
+  height: 24px;
+  line-height: 24px;
+  padding: 0px;
+  font-size: 12px;
+  margin: 0;
+  transform: translateY(-50%);
+}
+.mui-table-view .no-data{
+  padding: 50px;
+  text-align: center;
+}
+.mui-table-view .no-data i{
+  display: block;
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+.mui-table-view .no-data span{
+  font-size: 14px;
+  color: #1989fa;
+}

@@ -1,0 +1,182 @@
+#header{
+  display: flex;
+  padding: 10px;
+  height: 55px;
+  border-bottom: 1px solid #eee;
+}
+#header .mui-icon{
+  padding: 0 20px 0 8px;
+  line-height: 34px;
+}
+#header .head-icon{
+  font-size: 30px;
+}
+#header .mui-search {
+  flex: 1;
+  box-sizing: border-box;
+  position: relative;
+  background: #e6e6e6;
+  border-radius: 3px;
+}
+#header .search-input{
+  border: 0;
+  background-color: rgba(230, 230, 230, 0);
+  padding: 10px 10px 10px 40px;
+  line-height: 20px;
+  font-weight: 500;
+  height: 100%;
+  font-size: 14px;
+  caret-color: #007aff;
+}
+#header .mui-search .left-icon{
+  position: absolute;
+  left: 10px;
+  height: 30px;
+  font-size: 22px;
+  top: 7px;
+  color: #8f8f8f;
+}
+
+#main{
+  min-height: calc(100vh - 55px);
+  overflow-y: scroll;
+  position: relative;
+}
+.classify-wrap{
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  padding: 15px 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.classify-wrap a{
+  display: block;
+  text-align: center;
+  /* width: 16.66%; */
+}
+.classify-wrap i{
+  font-size: 22px;
+  height: 26px;
+  display: inline-block;
+}
+.classify-wrap .qipai{
+  font-size: 26px;
+  color: #5ca831;
+}
+.classify-wrap .youxi{
+  color: #f44d44;
+}
+.classify-wrap .xiaoshuo{
+  color: #f4b10a;
+}
+.classify-wrap .shiping{
+  font-size: 18px;
+  color: #ea34ac;
+}
+.classify-wrap .zhibo{
+  font-size: 20px;
+}
+.classify-wrap .qita{
+  color: #919191;
+}
+.classify-wrap span{
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  color: #333;
+}
+
+/* 列表 */
+.list-table:after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 15px;
+  height: 1px;
+  content: "";
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background-color: #e8e4e4;
+}
+.mui-table-view:before, .mui-table-view::after,.list-table:last-child:after{
+  height: 0;
+}
+.mui-table-view .list-table{
+  transform-style: preserve-3d;
+  overflow: hidden;
+  position: relative;
+  padding: 11px 15px;
+  padding-right: 65px;
+}
+.mui-table-view .list-table:active{
+  background: #eee;
+}
+.mui-table-view .list-table:active{
+  background-color: #eee;
+}
+.mui-table-view .list-table a.a-cont{
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: -11px -15px;
+  padding: inherit;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: inherit;
+  margin-right: -65px;
+}
+.mui-table-view .list-table h3{
+  font-size: 15px;
+}
+.mui-table-view .list-table .mui-media-body i{
+  font-size: 12px;
+  font-style: normal;
+  color: #9c9c9c;
+  line-height: 20px;
+  display: block;
+}
+.mui-table-view .list-table p{
+  font-size: 14px;
+  color: #4f4f4f;
+  margin-bottom: 0;
+  overflow: hidden;
+    white-space: nowrap;
+}
+.mui-table-view .list-table img{
+  height: 60px;
+  width: 60px;
+  max-width: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-top: 2px;
+  margin-right: 10px;
+  line-height: 42px;
+  float: left;
+  background-color: #fff;
+}
+.mui-table-view .list-table .primary-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 46px;
+  height: 24px;
+  line-height: 24px;
+  padding: 0px;
+  font-size: 12px;
+  margin: 0;
+  transform: translateY(-50%);
+}
+.mui-table-view .no-data{
+  padding: 50px;
+  text-align: center;
+}
+.no-data i{
+  display: block;
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+.no-data span{
+  font-size: 12px;
+  color: #1989fa;
+}

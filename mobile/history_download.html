@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>下载历史</title>
+    <link rel="stylesheet" href="./static/css/mui.min.css" />
+    <link rel="stylesheet" href="./static/fonts/fonts.css" />
+    <link rel="stylesheet" href="./static/css/history_download.css"/>
+    <script src="./static/js/ios_app.js"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="mui-bar mui-bar-nav">
+      <a class="mui-action-back mui-icon mui-pull-left">
+        <i class="iconfont head-icon">&#xe611;</i>
+        <span class="history-title">下载历史</span>
+      </a>
+    </header>
+    <div style="height: 44px;"></div>
+    <!-- header -->
+    <!-- 已下载 -->
+    <div class="mark-text">已下载</div>
+    <ul class="mui-table-view mui-table-view-chevron history-list" id="historyList"></ul>
+    <!-- 已下载 -->
+
+    <!-- 为你优选 -->
+    <div class="mark-text">为你优选</div>
+    <div class="hot-app-wrap">
+      <h2>大多数人都下载了</h2>
+      <div class="hot-apps">
+        <!-- APP内容 -->
+      </div>
+    </div>
+    <!-- 为你优选 -->
+  </body>
+  <script src="./static/js/mui.min.js"></script>
+  <script src="./static/js/ajax.js"></script>
+  <script src="./static/js/history_download.js"></script>
+  <script src="./static/js/download.js"></script>
+</html>

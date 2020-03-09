@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="keywords" content="成年人app入驻,日本看电影的app,成年人app推广,各种app引流">
+  <meta name="description" content="宅易宝双家入驻，免费推广引流，解决商家APP曝光率低的问题">
+  <title>商家入驻</title>
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+  <link href="./static/css/settled.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="container">
+    <div class="c-header">
+      <a class="go-back" href="/">
+        <svg t="1583228892171" class="my-svg" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2463" width="24" height="24"><path d="M646.981818 889.018182c-9.309091 0-18.618182-2.327273-25.6-9.309091L276.945455 532.945455c-6.981818-6.981818-9.309091-16.290909-9.309091-25.6s4.654545-18.618182 9.309091-25.6L623.709091 137.309091c13.963636-13.963636 34.909091-13.963636 48.872727 0s13.963636 34.909091 0 48.872727L351.418182 507.345455l321.163636 321.163636c13.963636 13.963636 13.963636 34.909091 0 48.872727-6.981818 9.309091-16.290909 11.636364-25.6 11.636364z" fill="#fff" p-id="2464"></path></svg>
+      </a>
+      <h6>提交您的APP</h6>
+    </div>
+    <div class="c-body">
+      <div class="c-step">
+        <div class="step-txt">
+          <span class="active">提交信息</span>
+          <span>后台审核</span>
+          <span>平台上架</span>
+        </div>
+        <div class="stpe-progress">
+          <span class="active"><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+        </div>
+      </div>
+      <form action="" class="c-form">
+        <h6>应用信息</h6>
+        <div class="form-input">
+          <span>APP名称</span>
+          <input type="text" id="app-name" placeholder="名称">
+        </div>
+        <div class="form-input">
+          <span>APP类型</span>
+          <!-- <input type="text" placeholder="类型"> -->
+          <div class="c-select">
+            <select name="" id="app-type" placeholder="">
+              <option value="" disabled selected>请选择类型</option>
+              <option value="1">棋牌</option>
+              <option value="2">直播</option>
+              <option value="3">小说</option>
+              <option value="4">游戏</option>
+              <option value="5">视频</option>
+              <option value="6">其他</option>
+            </select>
+            <svg t="1583230889163" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3445" width="20" height="20"><path d="M787.2 380.8c-9.6-9.6-22.4-12.8-35.2-12.8l-480 3.2c-12.8 0-25.6 3.2-35.2 12.8-19.2 19.2-19.2 48 0 67.2l240 240c0 0 0 0 0 0 0 0 0 0 0 0 3.2 3.2 9.6 6.4 12.8 9.6 0 0 3.2 3.2 3.2 3.2 16 6.4 38.4 3.2 51.2-9.6l240-243.2C806.4 428.8 803.2 400 787.2 380.8z" p-id="3446"></path></svg>
+          </div>
+        </div>
+        <div class="form-input wid-10">
+          <span>APP客户端</span>
+          <div class="checkbox-client">
+            <div>
+              <div class="box-check">
+                <input class="checkbox" ischecked='false' type="checkbox" id="android" value="andriod">
+                <label for="android">andriod</label>
+              </div>
+              <input type="text" id="app-android" name="andriod" disabled placeholder="andriod下载链接">
+            </div>
+            <div>
+              <div class="box-check ios">
+                <input class="checkbox" ischecked='false' type="checkbox" id="ios" value="ios">
+                <label for="ios">ios</label>
+              </div>
+              <input type="text" id="app-ios" name="ios" disabled placeholder="ios下载链接">
+            </div>
+          </div>
+        </div>
+        
+        <!-- <div class="line-apart"></div> -->
+        <div class="form-input">
+          <span>APP-LOGO</span>
+          <!-- <input type="text" placeholder="LOGO"> -->
+          <div id="cupload-logo"></div>
+          <em>请上传90*90的大小的图片</em>
+        </div>
+        <div class="form-input">
+          <span>APP详情图</span>
+          <div id="cupload-detail"></div>
+          <em>请上传190*315的大小的图片</em>
+        </div>
+        <div class="form-input wid-10">
+          <span>APP简介</span>
+          <textarea type="text" id="app-brief" placeholder="简介" maxlength="88"></textarea>
+        </div>
+      </form>
+      <div class="footer">
+        <span>请填写以上表单内容</span>
+        <button id="confirm">提交</button>
+      </div>
+    </div>
+  </div>
+  <script src="./static/js/cupload.js"></script>
+  <script src="./static/js/settled.js"></script>
+</body>
+</html>

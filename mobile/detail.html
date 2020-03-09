@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>APP详情</title>
+  <link rel="stylesheet" href="./static/css/mui.min.css">
+  <link rel="stylesheet" href="./static/css/detail.css">
+  <link rel="stylesheet" href="./static/fonts/fonts.css">
+  <script src="./static/js/ios_app.js"></script>
+</head>
+<body>
+  <header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-pull-left">
+      <i class="iconfont head-icon">&#xe611;</i>
+    </a>
+    <a href="./history_download.html" class="mui-icon mui-pull-right">
+      <i class="iconfont head-icon">&#xe638;</i>
+    </a>
+    <span class="mui-icon mui-pull-right">&nbsp;</span>
+    <a href="./collect.html" class="mui-icon mui-pull-right shoucang">
+      <i class="iconfont head-icon">&#xe618;</i>
+    </a>
+  </header>
+  <div class="main-cont">
+    <div class="logo"><img src="./static/temporary_img/yt.png" alt=""></div>
+    <div class="title-c">
+      <h1>******</h1>
+      <div>
+        <span class="score-num">**分</span>
+        <span class="download-num">**万次下载</span>
+      </div>
+      <div class="collect">
+        添加到收藏夹
+        <i class="iconfont">&#xe618;</i>
+      </div>
+    </div>
+  </div>
+  <!-- class="mui-slider" -->
+  <div id="slider" class="mui-slider">
+    <div id="tab-box" class="tab-box">
+      <div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+        <a class="mui-control-item mui-active" href="#item1mobile">详情</a>
+        <a class="mui-control-item" href="#item2mobile">评论(<span class="discuss-total">*</span>)</a>
+      </div>
+      <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>
+    </div>
+    <div class="zanwei">
+      <!-- 占位使用，防止滚动条抖动 -->
+    </div>
+    <div class="mui-slider-group">
+      <div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+        <div id="scroll1" class="mui-scroll-wrapper">
+          <div class="mui-scroll">
+            <div class="detail-imgs">
+              <img src="./static/temporary_img/d1.jpg" alt="">
+              <img src="./static/temporary_img/d2.jpg" alt="">
+            </div>
+            <div class="detail-txt">
+              【心动热聊】，一对一视频聊天，直接的交友方式，亲密一对一、心动面对面，单身男女脱单必备神器，私密视频聊天、语音、男女聊天交友、同城约会、谈谈心、恋恋爱、看美颜、各种聊骚、无聊看直播表演、找个附近的人聊聊~简单 心动 美好 邂逅属于你的惊喜遇见、小确幸
+            </div>
+            <div class="division-line"></div>
+            <div class="detail-hot">
+              <h3>类似应用</h3>
+              <div class="hot-apps">
+                <!-- 动态加载内容 -->
+              </div>
+            </div>
+            <div class="division-line"></div>
+            <div class="feed-back">
+              <a href="./opinion.html">
+                <h5>一键反馈</h5>
+                <i class="mui-icon mui-icon-arrowright"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="item2mobile" class="mui-slider-item mui-control-content">
+        <div id="scroll2" class="mui-scroll-wrapper">
+          <div class="mui-scroll">
+            <div class="division-line"></div>
+            <div class="score">
+              <h3>*</h3>
+              <div class="xing-com">
+                <div class="xingxing">
+                  <span><i class="iconfont">&#xe623;</i><i class="iconfont gold">&#xe623;</i></span>
+                  <span><i class="iconfont">&#xe623;</i><i class="iconfont gold">&#xe623;</i></span>
+                  <span><i class="iconfont">&#xe623;</i><i class="iconfont gold">&#xe623;</i></span>
+                  <span><i class="iconfont">&#xe623;</i><i class="iconfont gold">&#xe623;</i></span>
+                  <span><i class="iconfont">&#xe623;</i><i class="iconfont gold">&#xe623;</i></span>
+                </div>
+                <div class="comment-total">
+                  <span class="score-people">*</span>
+                  人评分
+                </div>
+              </div>
+              <div class="edit-s">
+                <i id="set-message" class="iconfont">&#xe67e;</i>
+              </div>
+            </div>
+            <div class="division-line"></div>
+            <div class="comments">
+              <ul>
+                <!-- <li>
+                  <div class="mui-loading">
+                    <div class="mui-spinner">
+                    </div>
+                  </div>
+                </li> -->
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height:64px"></div>
+  <div class="footer">
+    <button class="mui-btn-primary" id="down-app">立即下载</button>
+  </div>
+  <div class="message-box" id="message-box">
+    <input type="text" class="mui-input" id="message-input" placeholder="评论">
+    <button type="button" class="mui-btn mui-btn-primary" id="confirm">发送</button>
+  </div>
+  <script src="./static/js/mui.min.js"></script>
+  <script src="./static/js/ajax.js"></script>
+  <script src="./static/js/detail.js"></script>
+  <script src="./static/js/download.js"></script>
+</body>
+</html>

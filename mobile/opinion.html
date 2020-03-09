@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>提交反馈</title>
+  <link rel="stylesheet" href="./static/css/mui.min.css">
+  <link rel="stylesheet" href="./static/fonts/fonts.css">
+  <link rel="stylesheet" href="./static/css/mui.picker.css">
+  <link rel="stylesheet" href="./static/css/mui.poppicker.css">
+  <link rel="stylesheet" href="./static/css/opinion.css">
+</head>
+<body>
+  <div class="wrap">
+    <!-- header -->
+    <header class="mui-bar mui-bar-nav">
+      <a class="mui-action-back mui-icon mui-pull-left">
+        <i class="iconfont head-icon">&#xe611;</i>
+      </a>
+      <h1 class="mui-title">提交反馈</h1>
+    </header>
+   <!-- header -->
+    <div class="main">
+      <div class="item">
+        <div class="label">用户类型</div>
+        <div class="content">
+          <div class="mui-input-row mui-radio">
+            <label>用户反馈</label>
+            <input data-value="1" name="radio1" checked type="radio">
+          </div>
+          <div class="mui-input-row mui-radio">
+            <label>供应商反馈</label>
+            <input data-value="2" name="radio1" type="radio">
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="label">反馈原因</div>
+        <div class="content">
+          <textarea id="cause" cols="10" rows="4" placeholder="请填写反馈详情"></textarea>
+        </div>
+      </div>
+      <div class="item">
+        <div class="label">联系方式</div>
+        <div class="content">
+          <div class="contactDetails"><span>QQ</span>  <i class="iconfont">&#xe688;</i></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="label" id="chart-title">QQ号码</div>
+        <div class="content">
+          <input type="text" id="chat-value" placeholder="请输入QQ号码">
+        </div>
+      </div>
+    </div>
+  <!-- main -->
+  <!--  footer -->
+  </div>
+  <div class="footer">
+    <button class="submit">提交</button>
+  </div>
+  <script src="./static/js/mui.min.js"></script>
+  <script src="./static/js/ajax.js"></script>
+  <script src="./static/js/mui.picker.js"></script>
+  <script src="./static/js/mui.poppicker.js"></script>
+  <script>
+    let contactType = 1
+    ;(function() {
+      var picker = new mui.PopPicker(); 
+      picker.setData([{value:'1',text:'QQ'},{value:'2',text:'微信'},{value:'3',text:'电话'} ]);
+      document.getElementsByClassName('contactDetails')[0].addEventListener('tap', function() {
+        picker.show(function(val) {
+          document.getElementById('chart-title').innerHTML = val[0].text + '号码'
+          document.querySelector('.contactDetails span').innerHTML = val[0].text
+          document.querySelector('#chat-value').setAttribute('placeholder', '请输入' + val[0].text + '号码')
+          contactType = val[0].value
+        })
+      })
+      document.querySelector('#cause').addEventListener('input', function() {
+        let el = document.querySelector('.submit')
+        if(this.value) {
+          el.className = 'allow submit'
+        } else {
+          el.className = 'submit'
+        }
+      })
+      // submit
+      document.querySelector('.submit').addEventListener('tap', function() {
+        let userType = [].filter.call(document.getElementsByName('radio1'), (item) => {
+          return item.checked
+        })[0].getAttribute('data-value')
+        let cause = document.querySelector('#cause').value
+        let chatValue = document.querySelector('#chat-value').value
+        if (cause && chatValue) {
+          mui.toast('谢谢您的反馈-我们会尽快核实');
+        }
+      })
+    }());
+  </script>
+</body>
+</html>
