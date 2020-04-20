@@ -58,8 +58,8 @@ router.post('/insertIntoDataList',function(req,res){
             download_total: 下载量
             score:  评分
         */
-        var sqList = "INSERT INTO data_list(title, create_time, brief, logo, ios_download, android_download, remarks, detail_imgs, type, device, score) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-        var sqListInfo = [params.title, new Date(), params.brief, params.logo, params.iosDownload, params.androidDownload, params.remarks, params.detailImgs, params.type, params.device, (Math.random()*5).toFixed(1)];
+        var sqList = "INSERT INTO data_list(title, create_time, brief, logo, ios_download, android_download, remarks, detail_imgs, type, device, qq, score) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        var sqListInfo = [params.title, new Date(), params.brief, params.logo, params.iosDownload, params.androidDownload, params.remarks, params.detailImgs, params.type, params.device, params.qq, (Math.random()*5).toFixed(1)];
         conn.query(sqList, sqListInfo, function (err, rows, fields) {
             // 迁移文件
             if (!err) {
@@ -142,9 +142,9 @@ router.post('/indexList',function(req, res){
     var device = common.getdevice(req);
     var sql = '';
     if (device > 2) {
-        sql = "select * FROM data_list where device >= 2 order by download_total desc limit 6";
+        sql = "select * FROM data_list where device >= 2 order by download_total desc limit " + req.body.pageSize;
     } else {
-        sql = "select * FROM data_list where device <= 2 order by download_total desc limit 6";
+        sql = "select * FROM data_list where device <= 2 order by download_total desc limit " + req.body.pageSize;
     }
     pool.getConnection(function (err, conn) {
         if (err) console.log("POOL /==> " + err);

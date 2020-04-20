@@ -31,6 +31,7 @@ function getData() {
     androidDownload: document.getElementById('app-android'),
     iosDownload: document.getElementById('app-ios'),
     brief: document.getElementById('app-brief'),
+    qq: document.getElementById('app-qq')
   }
   var data = {};
   var logoImg = document.getElementById('cupload-logo').querySelector('ul li img');

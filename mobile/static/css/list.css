@@ -7,9 +7,15 @@
 #header .mui-icon{
   padding: 0 20px 0 8px;
   line-height: 34px;
+  display: flex;
+}
+#header .rank-title {
+  font-size: 16px;
+  color: #666;
+  padding-top: 1px;
 }
 #header .head-icon{
-  font-size: 30px;
+  font-size: 22px;
 }
 #header .mui-search {
   flex: 1;
@@ -36,7 +42,6 @@
   top: 7px;
   color: #8f8f8f;
 }
-
 #main{
   min-height: calc(100vh - 55px);
   overflow-y: scroll;

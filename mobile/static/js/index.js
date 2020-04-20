@@ -47,7 +47,7 @@ ajax({
 ajax({
   type: "post",
   url: "/api/indexList",
-  data: {},
+  data: {pageSize: 6},
   success: function (response) {
     var indexList = document.querySelector('.index-list');
     var numberOne = document.querySelector('.number-one');
