@@ -129,7 +129,7 @@ html {
 .c-txt p{
   margin-top: 10px;
 }
-button{
+.button{
   margin: 0 auto;
   text-align: center;
   width: 236px;
@@ -145,6 +145,8 @@ button{
   color: #fff;
   margin-top: 28px;
   display: block;
+  position: relative;
+  z-index: 999999;
 }
 .ruzhu{
   padding-bottom: 30px;
