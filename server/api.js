@@ -86,7 +86,7 @@ router.post('/banners',function(req,res){
         if (err) console.log("POOL /==> " + err);
         conn.query(sql, function (err, result) {
             result = result.map(function(item) {
-                item.host = 'http://' + host + '/img/banner/';
+                item.host = '/images/img/banner/';
                 return item;
             })
             common.result(res, conn, err, result)
@@ -125,7 +125,7 @@ router.post('/hots',function(req, res){
                 for (var i = 0; i < result.length; i++) {
                     arr.push({
                         id: result[i].id,
-                        logo: 'http://' + host + '/img/logo/' + result[i].logo,
+                        logo: '/images/img/logo/' + result[i].logo,
                         title: result[i].title,
                         downloadUrl: device > 2 ? result[i].android_download : result[i].ios_download
                     })
@@ -154,7 +154,7 @@ router.post('/indexList',function(req, res){
                 for (var i = 0; i < result.length; i++) {
                     arr.push({
                         id: result[i].id,
-                        logo: 'http://' + host + '/img/logo/' + result[i].logo,
+                        logo: '/images/img/logo/' + result[i].logo,
                         title: result[i].title,
                         brief: result[i].brief,
                         type: result[i].type,
@@ -189,7 +189,7 @@ router.post('/list',function(req, res){
                 for (var i = 0; i < result.length; i++) {
                     arr.push({
                         id: result[i].id,
-                        logo: 'http://' + host + '/img/logo/' + result[i].logo,
+                        logo: '/images/img/logo/' + result[i].logo,
                         title: result[i].title,
                         brief: result[i].brief,
                         downloadTotal: result[i].download_total || 0,
@@ -217,11 +217,11 @@ router.post('/detail',function(req,res){
                 var obj = {};
                 if (!err) {
                     obj.id = data.id;
-                    obj.logo = 'http://' + host + '/img/logo/' + data.logo;
+                    obj.logo = '/images/img/logo/' + data.logo;
                     obj.title = data.title;
                     obj.brief = data.brief;
                     obj.detailImgs = data.detail_imgs || '';
-                    obj.imgHost = 'http://' + host + '/img/detail/';
+                    obj.imgHost = '/images/img/detail/';
                     obj.downloadTotal = data.download_total || 0;
                     obj.downloadUrl = device > 2 ? data.android_download : data.ios_download;
                     obj.discussTotal = Number(total[0]['COUNT(1)']) || 0;
@@ -254,7 +254,7 @@ router.post('/likeness',function(req,res){
                 for (var i = 0; i < result.length; i++) {
                     arr.push({
                         id: result[i].id,
-                        logo: 'http://' + host + '/img/logo/' + result[i].logo,
+                        logo: '/images/img/logo/' + result[i].logo,
                         title: result[i].title,
                         downloadUrl: device > 2 ? result[i].android_download : result[i].ios_download
                     })
@@ -322,7 +322,7 @@ router.post('/localDatas',function(req, res){
             for (var i = 0; i < result.length; i++) {
                 arr.push({
                     id: result[i].id,
-                    logo: 'http://' + host + '/img/logo/' + result[i].logo,
+                    logo: '/images/img/logo/' + result[i].logo,
                     title: result[i].title,
                     brief: result[i].brief,
                     type: result[i].type,
@@ -355,7 +355,7 @@ router.post('/searchList',function(req, res){
               for (var i = 0; i < result.length; i++) {
                   arr.push({
                       id: result[i].id,
-                      logo: 'http://' + host + '/img/logo/' + result[i].logo,
+                      logo: '/images/img/logo/' + result[i].logo,
                       title: result[i].title,
                       brief: result[i].brief,
                       type: result[i].type,
@@ -382,7 +382,6 @@ router.post('/download', (req, res) => {
                 var total = (result[0].download_total || 0) + 1;
                 var sqlUpdate = "UPDATE data_list SET download_total = ? WHERE id = ?";
                 conn.query(sqlUpdate, [total, id], function (err, result) {
-                    console.log(err, 1234)
                     common.result(res, conn, err, '')
                 })
             }
