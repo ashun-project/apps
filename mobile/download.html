@@ -15,49 +15,49 @@
   // @ts-ignore
   const isIE = !!window.ActiveXObject || "ActiveXObject" in window
   const downloadFile = function (sUrl) {
-	if (/(iP)/g.test(navigator.userAgent)) {
-		return false;
-	}
+	// if (/(iP)/g.test(navigator.userAgent)) {
+	// 	return false;
+	// }
 
-	if (isChrome || isSafari || isFireFox) {
-		var link = document.createElement('a');
-		link.href = sUrl;
-		if (link.download !== undefined) {
-			link.download = sUrl.substring(sUrl.lastIndexOf('/') + 1, sUrl.length);
-		}
+	// if (isChrome || isSafari || isFireFox) {
+	// 	var link = document.createElement('a');
+	// 	link.href = sUrl;
+	// 	if (link.download !== undefined) {
+	// 		link.download = sUrl.substring(sUrl.lastIndexOf('/') + 1, sUrl.length);
+	// 	}
 
-		if (document.createEvent) {
-			var e = document.createEvent('MouseEvents');
-			e.initEvent('click', true, true);
-			link.dispatchEvent(e);
-			return true;
-		}
-	}
+	// 	if (document.createEvent) {
+	// 		var e = document.createEvent('MouseEvents');
+	// 		e.initEvent('click', true, true);
+	// 		link.dispatchEvent(e);
+	// 		return true;
+	// 	}
+	// }
 
-	if (isIE) {
-		const iframe = document.createElement('iframe');
-		iframe.src = sUrl
-		iframe.id = 'saveFileFrame'
-		iframe.style.display = 'none'
-		iframe.onload = function () {
-			// @ts-ignore
-			document.frames["saveFileFrame"].document.execCommand('saveAs')
-			// @ts-ignore
-			iframe.removeNode(true)
-		}
-		document.body.appendChild(iframe)
-		return true;
-	}
+	// if (isIE) {
+	// 	const iframe = document.createElement('iframe');
+	// 	iframe.src = sUrl
+	// 	iframe.id = 'saveFileFrame'
+	// 	iframe.style.display = 'none'
+	// 	iframe.onload = function () {
+	// 		// @ts-ignore
+	// 		document.frames["saveFileFrame"].document.execCommand('saveAs')
+	// 		// @ts-ignore
+	// 		iframe.removeNode(true)
+	// 	}
+	// 	document.body.appendChild(iframe)
+	// 	return true;
+	// }
 
-	if (sUrl.indexOf('?') === -1) {
-		sUrl += '?download';
-	}
+	// if (sUrl.indexOf('?') === -1) {
+	// 	sUrl += '?download';
+	// }
 
 	window.open(sUrl, '_self');
 	return true;
 }
 ;(function() {
-  let val = window.location.href.split('?')[1].split('=')[1]
+  let val = window.location.href.split('src=')[1];
   downloadFile(val)
   
 }());

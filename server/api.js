@@ -309,7 +309,7 @@ router.post('/discuss',function(req, res){
 router.post('/localDatas',function(req, res){
     var ids = req.body.ids;
     var host = req.headers['host'];
-    if (!ids || !ids.join) {
+    if (!ids.length || !ids.join) {
         res.json({code: -1, messge: '数据错了'});
         return;
     }

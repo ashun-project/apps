@@ -120,6 +120,10 @@ alist[1].addEventListener('tap', function() {
 // })
 setTimeout(function() {
   getTabHeight('#item1mobile');
+  // 延迟计算两次
+  setTimeout(function() {
+    getTabHeight('#item1mobile');
+  }, 1000)
 }, 300)
 function getTabHeight(id) {
   var hgt = document.querySelector(id + ' .mui-scroll').offsetHeight;
