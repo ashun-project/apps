@@ -58,7 +58,7 @@ router.post('/insertIntoDataList',function(req,res){
             download_total: 下载量
             score:  评分
         */
-        var sqList = "INSERT INTO data_list(title, create_time, brief, logo, ios_download, android_download, remarks, detail_imgs, type, device, qq, score) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        var sqList = "INSERT INTO data_list(title, create_time, brief, logo, ios_download, android_download, remarks, detail_imgs, type, device, qq, score) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         var sqListInfo = [params.title, new Date(), params.brief, params.logo, params.iosDownload, params.androidDownload, params.remarks, params.detailImgs, params.type, params.device, params.qq, (Math.random()*5).toFixed(1)];
         conn.query(sqList, sqListInfo, function (err, rows, fields) {
             // 迁移文件
