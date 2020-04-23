@@ -52,7 +52,7 @@ ajax({
     var indexList = document.querySelector('.index-list');
     var numberOne = document.querySelector('.number-one');
     var firstData = response.data.shift();
-    var typeList = ['', '棋牌', '直播', '小说', '游戏', '视频', '其他'];
+    var typeList = ['', '棋牌', '游戏', '小说', '视频', '直播', '其他'];
     var str = '';
     for (var i = 0; i < response.data.length; i++) {
       str += contTxt(response.data[i])

@@ -9,7 +9,7 @@ ajax({
   data: {ids: idsData},
   success: function (response) {
     var data = response.data || [];
-    var typeList = ['', '棋牌', '直播', '小说', '游戏', '视频', '其他'];
+    var typeList = ['', '棋牌', '游戏', '小说', '视频', '直播', '其他'];
     var str = '';
     for (var i = 0; i < data.length; i++) {
       str += '<li class="list-table" id="download-'+ data[i].id +'">' +
