@@ -87,6 +87,7 @@ router.post('/banners',function(req,res){
         conn.query(sql, function (err, result) {
             result = result.map(function(item) {
                 item.host = '/images/img/banner/';
+                item.createTime = common.getFormatDate(item.create_time);
                 return item;
             })
             common.result(res, conn, err, result)

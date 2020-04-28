@@ -5,6 +5,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var path = require('path');
 var api = require('./api');
+var admin = require('./admin');
 
 
 app.use(cookie());
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(api);
+app.use(admin);
 
 
 app.listen(8888);

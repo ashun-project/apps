@@ -2,6 +2,10 @@
   <div id="app">
     <el-row style="height: 100%;">
         <el-col :span="4" style="min-height: 100%; background-color: #324057;">
+            <div class="toxiang">
+                <img src="@/assets/img/tox.jpg" alt="">
+            </div>
+            <div style="height:1px;background:rgba(242, 242, 242, 0.03);"></div>
           <el-menu
             default-active="2"
             class="el-menu-vertical-demo"
@@ -9,36 +13,35 @@
             @close="handleClose"
             background-color="#324057"
             text-color="#fff"
+            router
             active-text-color="#ffd04b">
-            <el-submenu index="1">
-              <template slot="title">
-                <i class="el-icon-location"></i>
-                <span>导航一</span>
-              </template>
-              <el-menu-item-group>
-                <template slot="title">分组一</template>
-                <el-menu-item index="1-1">选项1</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
-              </el-menu-item-group>
-              <el-menu-item-group title="分组2">
-                <el-menu-item index="1-3">选项3</el-menu-item>
-              </el-menu-item-group>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-            <el-menu-item index="2">
+            <el-menu-item index="/">
               <i class="el-icon-menu"></i>
-              <span slot="title">导航二</span>
+              <span slot="title">APP列表</span>
             </el-menu-item>
-            <el-menu-item index="3" disabled>
+            <!-- <el-menu-item index="3">
               <i class="el-icon-document"></i>
-              <span slot="title">导航三</span>
+              <span slot="title">子帐号列表</span>
+            </el-menu-item> -->
+            <el-menu-item index="/hot">
+              <i class="el-icon-document"></i>
+              <span slot="title">热门推荐列表</span>
             </el-menu-item>
-            <el-menu-item index="4">
+            <el-menu-item index="/banner">
               <i class="el-icon-setting"></i>
-              <span slot="title">导航四</span>
+              <span slot="title">轮播图列表</span>
+            </el-menu-item>
+            <el-menu-item index="">
+              <i class="el-icon-setting"></i>
+              <span slot="title">审核列表</span>
+            </el-menu-item>
+            <el-menu-item index="/addbanner">
+              <i class="el-icon-setting"></i>
+              <span slot="title">添加轮播图</span>
+            </el-menu-item>
+             <el-menu-item index="8">
+              <i class="el-icon-setting"></i>
+              <span slot="title">添加子帐号</span>
             </el-menu-item>
           </el-menu>
         </el-col>
@@ -46,8 +49,10 @@
           <!-- <keep-alive>
               <router-view></router-view>
           </keep-alive> -->
-          <div style="height: 60px;border-bottom:1px solid #eee;margin-bottom:20px">头部</div>
-          <div style="padding:0 20px">
+          <div class="head-top">
+              <span>退出</span>
+          </div>
+          <div class="content">
             <router-view></router-view>
           </div>
           
@@ -71,6 +76,9 @@ export default {
 </script>
 
 <style>
+*{
+    box-sizing: border-box;
+}
 html,body{
   margin: 0;
   padding: 0;
@@ -82,5 +90,39 @@ html,body{
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   height: 100%;
+}
+.toxiang{
+    width: 70px;
+    height: 70px;
+    margin: 30px auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.toxiang img{
+    width: 100%;
+}
+.el-menu{
+    border-right: 0;
+}
+.head-top{
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    text-align: right;
+    padding-right: 20px;
+    border-bottom: 1px solid #eee;
+    background: rgba(176, 210, 245, 0.28);
+    color: #ff3b3b;
+    /* position: absolute;
+    top: 0;
+    right: 0; */
+}
+.content{
+    padding: 0 20px;
+    background: #f1f1f1;
+    min-height: calc(100vh - 50px);
+}
+.my-page{
+    padding: 20px 0;
 }
 </style>
