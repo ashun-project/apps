@@ -58,8 +58,8 @@ router.post('/insertIntoDataList',function(req,res){
             download_total: 下载量
             score:  评分
         */
-        var sqList = "INSERT INTO data_list(title, create_time, brief, logo, ios_download, android_download, remarks, detail_imgs, type, device, qq, score) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-        var sqListInfo = [params.title, new Date(), params.brief, params.logo, params.iosDownload, params.androidDownload, params.remarks, params.detailImgs, params.type, params.device, params.qq, (Math.random()*5).toFixed(1)];
+        var sqList = "INSERT INTO data_list(title, create_time, brief, logo, ios_download, android_download, remarks, detail_imgs, type, device, qq, score, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        var sqListInfo = [params.title, new Date(), params.brief, params.logo, params.iosDownload, params.androidDownload, params.remarks, params.detailImgs, params.type, params.device, params.qq, (Math.random()*5).toFixed(1), 0];
         conn.query(sqList, sqListInfo, function (err, rows, fields) {
             // 迁移文件
             if (!err) {
@@ -81,7 +81,7 @@ router.post('/insertIntoDataList',function(req,res){
 // banner添加跟设置
 router.post('/banners',function(req,res){
     var host = req.headers['host'];
-    var sql = "select * FROM banners where expire_time <= '2020-08-28 16:06:30'"
+    var sql = "select * FROM banners"
     pool.getConnection(function (err, conn) {
         if (err) console.log("POOL /==> " + err);
         conn.query(sql, function (err, result) {
@@ -114,9 +114,9 @@ router.post('/hots',function(req, res){
     var host = req.headers['host'];
     var device = common.getdevice(req);
     if (device > 2) {
-        sql = "select * FROM data_list where hot = "+ '1' + " and device >= 2 order by create_time ASC limit 5";
+        sql = "select * FROM data_list where status = 1 and hot = "+ '1' + " and device >= 2 order by create_time ASC limit 5";
     } else {
-        sql = "select * FROM data_list where hot = "+ '1' + " and device <= 2 order by create_time ASC limit 5";
+        sql = "select * FROM data_list where status = 1 and hot = "+ '1' + " and device <= 2 order by create_time ASC limit 5";
     }
     pool.getConnection(function (err, conn) {
         if (err) console.log("POOL /==> " + err);
@@ -143,9 +143,9 @@ router.post('/indexList',function(req, res){
     var device = common.getdevice(req);
     var sql = '';
     if (device > 2) {
-        sql = "select * FROM data_list where device >= 2 order by download_total desc limit " + req.body.pageSize;
+        sql = "select * FROM data_list where status = 1 and device >= 2 order by download_total desc limit " + req.body.pageSize;
     } else {
-        sql = "select * FROM data_list where device <= 2 order by download_total desc limit " + req.body.pageSize;
+        sql = "select * FROM data_list where status = 1 and device <= 2 order by download_total desc limit " + req.body.pageSize;
     }
     pool.getConnection(function (err, conn) {
         if (err) console.log("POOL /==> " + err);
@@ -178,9 +178,9 @@ router.post('/list',function(req, res){
     var limitBefore = ((limit - 1) * 10);
     var sql = '';
     if (device > 2) {
-        sql = "select * FROM data_list where type = '"+ params.type +"' and device >= 2 order by download_total desc limit " + limitBefore + "," + 10;
+        sql = "select * FROM data_list where status = 1 and type = '"+ params.type +"' and device >= 2 order by download_total desc limit " + limitBefore + "," + 10;
     } else {
-        sql = "select * FROM data_list where type = '"+ params.type +"' and device <= 2 order by download_total desc limit " + limitBefore + "," + 10;
+        sql = "select * FROM data_list where status = 1 and type = '"+ params.type +"' and device <= 2 order by download_total desc limit " + limitBefore + "," + 10;
     }
     pool.getConnection(function (err, conn) {
         if (err) console.log("POOL /==> " + err);
@@ -243,9 +243,9 @@ router.post('/likeness',function(req,res){
     var device = common.getdevice(req);
     var sql = "";
     if (device > 2) {
-        sql = "select * FROM data_list where type = '"+ params.type + "' and device >= 2 order by download_total desc limit " + pageSize;
+        sql = "select * FROM data_list where status = 1 and type = '"+ params.type + "' and device >= 2 order by download_total desc limit " + pageSize;
     } else {
-        sql = "select * FROM data_list where type = '"+ params.type + "' and device <= 2 order by download_total desc limit " + pageSize;
+        sql = "select * FROM data_list where status = 1 and type = '"+ params.type + "' and device <= 2 order by download_total desc limit " + pageSize;
     }
     pool.getConnection(function (err, conn) {
         if (err) console.log("POOL /==> " + err);
@@ -344,9 +344,9 @@ router.post('/searchList',function(req, res){
   var title = req.body.title;
   var sql = '';
   if (device > 2) {
-      sql = "select * FROM data_list where title like '%" + title + "%' and device >= 2 order by download_total desc";
+      sql = "select * FROM data_list where status = 1 and title like '%" + title + "%' and device >= 2 order by download_total desc";
   } else {
-      sql = "select * FROM data_list where title like '%" + title + "%' and device <= 2 order by download_total desc";
+      sql = "select * FROM data_list where status = 1 and title like '%" + title + "%' and device <= 2 order by download_total desc";
   }
   pool.getConnection(function (err, conn) {
       if (err) console.log("POOL /==> " + err);

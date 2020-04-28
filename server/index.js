@@ -7,7 +7,6 @@ var path = require('path');
 var api = require('./api');
 var admin = require('./admin');
 
-
 app.use(cookie());
 app.use(session({
     resave: true, // 是指每次请求都重新设置session cookie，假设你的cookie是6000毫秒过期，每次请求都会再设置6000毫秒
@@ -22,7 +21,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(api);

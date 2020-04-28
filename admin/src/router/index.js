@@ -4,13 +4,15 @@ import home from '@/views/home'
 import hot from '@/views/hot'
 import banner from '@/views/banner'
 import addbanner from '@/views/addbanner'
+import shenhe from '@/views/shenhe'
+import login from '@/views/login'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: home
     },
@@ -28,6 +30,16 @@ export default new Router({
       path: '/addbanner',
       name: 'addbanner',
       component: addbanner
+    },
+    {
+      path: '/shenhe',
+      name: 'shenhe',
+      component: shenhe
+    },
+    {
+      path: '/',
+      name: 'login',
+      component: login
     }
   ]
 })

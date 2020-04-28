@@ -15,7 +15,7 @@
             text-color="#fff"
             router
             active-text-color="#ffd04b">
-            <el-menu-item index="/">
+            <el-menu-item index="/home">
               <i class="el-icon-menu"></i>
               <span slot="title">APP列表</span>
             </el-menu-item>
@@ -31,7 +31,7 @@
               <i class="el-icon-setting"></i>
               <span slot="title">轮播图列表</span>
             </el-menu-item>
-            <el-menu-item index="">
+            <el-menu-item index="/shenhe">
               <i class="el-icon-setting"></i>
               <span slot="title">审核列表</span>
             </el-menu-item>
@@ -39,10 +39,10 @@
               <i class="el-icon-setting"></i>
               <span slot="title">添加轮播图</span>
             </el-menu-item>
-             <el-menu-item index="8">
+             <!-- <el-menu-item index="8">
               <i class="el-icon-setting"></i>
               <span slot="title">添加子帐号</span>
-            </el-menu-item>
+            </el-menu-item> -->
           </el-menu>
         </el-col>
         <el-col :span="20" style="height: 100%;overflow: auto;">
@@ -50,7 +50,7 @@
               <router-view></router-view>
           </keep-alive> -->
           <div class="head-top">
-              <span>退出</span>
+              <span @click="loginOut">退出</span>
           </div>
           <div class="content">
             <router-view></router-view>
@@ -70,6 +70,12 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    loginOut() {
+       this.$http({url: '/api/admin/app/signout', method:'post', data: this.loginForm}).then(response => {
+          this.$Message.success('退出成功');
+          this.$router.push('/') 
+      })
     }
   }
 }
@@ -116,6 +122,9 @@ html,body{
     /* position: absolute;
     top: 0;
     right: 0; */
+}
+.head-top span{
+  cursor: pointer;
 }
 .content{
     padding: 0 20px;

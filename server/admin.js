@@ -11,8 +11,31 @@ var pool = mysql.createPool({
     database: 'zyb'
 });
 
+// 登入
+router.post('/admin/app/login',function(req, res){
+    var params = req.body;
+    if (params.userName === 'zybadmin' && params.password === 'zyb123123') {
+        req.session.loginUser = {userName: params.userName, code: 0};
+        res.json({code: 0, message: '登入成功'})
+    } else {
+        res.json({code: -1, message: '登入失败'})
+    }
+})
+
+// 退出登录
+router.post('/admin/app/signout', function (req, res, next) {
+    req.session.loginUser = null;
+    res.clearCookie('testapp');
+    res.json({message:'退出成功', code: 0});
+});
+
 // 列表页
 router.post('/admin/app/list',function(req, res){
+    var loginUser = req.session.loginUser;
+    if (!loginUser || !loginUser.userName) {
+        res.json({code: 3301, message: '请重新登录'})
+        return;
+    }
     var params = req.body;
     var limit = Number(params.page) || 1;
     var pageSize = params.pageSize || 10;
@@ -94,6 +117,11 @@ router.post('/admin/app/delete',function(req, res){
 
 // 获取推荐列表
 router.post('/admin/app/hot',function(req, res){
+    var loginUser = req.session.loginUser;
+    if (!loginUser || !loginUser.userName) {
+        res.json({code: 3301, message: '请重新登录'})
+        return;
+    }
     var params = req.body;
     var limit = Number(params.page) || 1;
     var pageSize = params.pageSize || 10;
@@ -131,6 +159,11 @@ router.post('/admin/app/hot',function(req, res){
 
 // 下架
 router.post('/admin/app/xiajia',function(req, res){
+    var loginUser = req.session.loginUser;
+    if (!loginUser || !loginUser.userName) {
+        res.json({code: 3301, message: '请重新登录'})
+        return;
+    }
     var params = req.body;
     var sqlUpdate = "UPDATE data_list SET hot = 0 WHERE id = " + params.id;
     pool.getConnection(function (err, conn) {
@@ -141,8 +174,91 @@ router.post('/admin/app/xiajia',function(req, res){
     })
 })
 
+// banner上传
+router.post('/admin/app/updatebanner',function(req, res){
+    var loginUser = req.session.loginUser;
+    if (!loginUser || !loginUser.userName) {
+        res.json({code: 3301, message: '请重新登录'})
+        return;
+    }
+    var params = req.body;
+    var sqList = "INSERT INTO banners(name, open_url, img_url, create_time) VALUES ?";
+    var sqListInfo = [[params.name, params.open_url, params.img_url, new Date()]];
+    pool.getConnection(function (err, conn) {
+        conn.query(sqList, [sqListInfo], function (err, rows, fields) {
+            if (err) console.log("updatebanner /==> " + err);
+            common.moveFile('banner', params.img_url);
+            common.result(res, conn, err, '')
+        })
+    })
+})
+
+// 删除
+router.post('/admin/banner/delete',function(req, res){
+    var loginUser = req.session.loginUser;
+    if (!loginUser || !loginUser.userName) {
+        res.json({code: 3301, message: '请重新登录'})
+        return;
+    }
+    var sql = "DELETE from banners WHERE id = " + req.body.id;
+    pool.getConnection(function (err, conn) {
+        if (err) console.log("POOL /==> " + err);
+        conn.query(sql, function (err, result) {
+            common.result(res, conn, err, '')
+        })
+    })
+})
 
 
+// 审核列表页
+router.post('/admin/app/shenheList',function(req, res){
+    var params = req.body;
+    var limit = Number(params.page) || 1;
+    var pageSize = params.pageSize || 10;
+    var limitBefore = ((limit - 1) * pageSize);
+    var sql = "select * FROM data_list where status = 0 order by create_time desc limit " + limitBefore + "," + pageSize;
+    var sqlCount =  "select COUNT(1) FROM data_list where status = 0";
+    pool.getConnection(function (err, conn) {
+        if (err) console.log("POOL /==> " + err);
+        conn.query(sql, function (err, result) {
+            var arr = [];
+            if (!err) {
+                for (var i = 0; i < result.length; i++) {
+                    arr.push({
+                        id: result[i].id,
+                        logo: '/images/img/logo/' + result[i].logo,
+                        title: result[i].title,
+                        brief: result[i].brief,
+                        downloadTotal: result[i].download_total || 0,
+                        androidUrl: result[i].android_download,
+                        iosUrl: result[i].ios_download,
+                        date: common.getFormatDate(result[i].create_time),
+                        type: result[i].type,
+                        score: result[i].score,
+                        hot: result[i].hot,
+                        qq: result[i].qq
+                    })
+                }
+            }
+            conn.query(sqlCount, function (err, count) {
+                var total = count[0]['COUNT(1)'] || 0;
+                common.result(res, conn, err, {list: arr, total: total})
+            })
+            
+        })
+    })
+})
 
+// 审核
+router.post('/admin/app/shenheUpdate',function(req, res){
+    var params = req.body;
+    var sqlUpdate = "UPDATE data_list SET status = 1 WHERE id = " + params.id;
+    pool.getConnection(function (err, conn) {
+        if (err) console.log("POOL /==> " + err);
+        conn.query(sqlUpdate, function (err, result) {
+            common.result(res, conn, err, '')
+        })
+    })
+})
 
 module.exports = router;
