@@ -96,7 +96,7 @@ overflow-y: scroll; */
 }
 .hot-app-wrap {
   background: white;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   min-height: 160px;
 }
 .hot-app-wrap h2 {
@@ -108,9 +108,11 @@ overflow-y: scroll; */
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
+  flex-wrap: wrap;
 }
 .hot-apps .item{
-  /* width: 25%; */
+  /* width: 20%; */
+  margin-bottom: 20px;
 }
 .hot-apps .item a{
   display: block;

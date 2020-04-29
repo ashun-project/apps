@@ -30,7 +30,7 @@ ajax({
 ajax({
   type: "post",
   url: "/api/hots",
-  data: {},
+  data: {pageSize: 10},
   success: function (response) {
     var hotApps = document.querySelector('.hot-apps');
     var data = response.data;
@@ -47,7 +47,7 @@ ajax({
 ajax({
   type: "post",
   url: "/api/indexList",
-  data: {pageSize: 6},
+  data: {pageSize: 10},
   success: function (response) {
     var indexList = document.querySelector('.index-list');
     var numberOne = document.querySelector('.number-one');

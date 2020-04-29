@@ -113,10 +113,11 @@ router.post('/hots',function(req, res){
     var sql = '';
     var host = req.headers['host'];
     var device = common.getdevice(req);
+    var pageSize = req.body.pageSize || 5;
     if (device > 2) {
-        sql = "select * FROM data_list where status = 1 and hot = "+ '1' + " and device >= 2 order by create_time ASC limit 5";
+        sql = "select * FROM data_list where status = 1 and hot = "+ '1' + " and device >= 2 order by create_time ASC limit "+ pageSize;
     } else {
-        sql = "select * FROM data_list where status = 1 and hot = "+ '1' + " and device <= 2 order by create_time ASC limit 5";
+        sql = "select * FROM data_list where status = 1 and hot = "+ '1' + " and device <= 2 order by create_time ASC limit +"+ pageSize;
     }
     pool.getConnection(function (err, conn) {
         if (err) console.log("POOL /==> " + err);
