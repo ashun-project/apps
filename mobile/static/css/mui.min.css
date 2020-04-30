@@ -21,6 +21,12 @@ body::after {
   -webkit-animation-delay: 3s;
   animation-delay: 3s;
 }
+.mui-bar-tab, .mui-bar-nav{
+  max-width: 600px;
+  width: 100%;
+  left: 50% !important;
+  transform: translateX(-50%);
+}
 @-webkit-keyframes shadow-preload {
   0%,
   100% {

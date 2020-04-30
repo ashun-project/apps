@@ -23,7 +23,8 @@
         <div class="com-header-center-container"> 
             <a class="com-header-logo-link" id="J_logo" href="/"></a>
             <ul class="com-menu-list-box">
-                <li><a class="com-menu-btn selected" id="J_index" href="#xiazai">下载APP</a></li>
+              <li><a class="com-menu-btn selected" id="J_index" href="#xiazai">下载APP</a></li>
+                <li><a class="com-menu-btn" id="J_index" href="http://bd602.com">平台首页</a></li>
                 <li><a class="com-menu-btn" id="J_index" href="#jianjie">平台简介</a></li>
                 <li><a class="com-menu-btn" id="J_index" href="#ruzhu">入驻说明</a></li>
                 <li class="com-borderR"><a class="com-menu-btn" href="./settled.html">免费入驻</a><i class="com-hot com-new"></i></li>
@@ -487,6 +488,26 @@
             textHeight: 14
           });
         })();
+
+        fetch('/api/admin/frienlyListAll', {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'POST'
+        }).then(res => res.json()).then((result) => {
+          var links = document.querySelector('.line-s');
+          var str = '';
+          for(var i = 0;  i < result.data.length; i++) {
+            str += '<a href="'+ result.data[i].url +'" target="_bank">'+ result.data[i].title +'</a>'
+          }
+          if (!result.data.length) {
+            str = '暂无'
+          }
+          links.innerHTML = str;
+        }).catch(err => {
+          // alert(err);
+        })
     </script>
+    <script type="text/javascript" src="https://s4.cnzz.com/z_stat.php?id=1278862723&web_id=1278862723"></script>
 </body>
 </html>

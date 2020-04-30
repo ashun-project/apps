@@ -261,4 +261,101 @@ router.post('/admin/app/shenheUpdate',function(req, res){
     })
 })
 
+
+// 友情连接
+router.post('/admin/app/frienlyList',function(req, res){
+    var loginUser = req.session.loginUser;
+    if (!loginUser || !loginUser.userName) {
+        res.json({code: 3301, message: '请重新登录'})
+        return;
+    }
+    var params = req.body;
+    var limit = Number(params.page) || 1;
+    var pageSize = params.pageSize || 10;
+    var limitBefore = ((limit - 1) * pageSize);
+    var sql = "select * FROM friendly order by create_time desc limit " + limitBefore + "," + pageSize;
+    var sqlCount =  "select COUNT(1) FROM friendly";
+    if (params.title && params.url) {
+        sql = "select * FROM friendly where title = '"+ params.title +"' and url = '"+ params.url +"' order by create_time desc limit " + limitBefore + "," + pageSize;
+        sqlCount = "select COUNT(1) FROM friendly where title = '"+ params.title +"' and url = '"+ params.name +"'";
+    } else if (params.title) {
+        sql = "select * FROM friendly where title = '"+ params.title +"' order by create_time desc limit " + limitBefore + "," + pageSize;
+        sqlCount = "select COUNT(1) FROM friendly where title = '"+ params.title +"'";
+    } else if (params.url) {
+        sql = "select * FROM friendly where url = '"+ params.url +"' order by create_time desc limit " + limitBefore + "," + pageSize;
+        sqlCount = "select COUNT(1) FROM friendly where url = '"+ params.url +"'";
+    }
+    pool.getConnection(function (err, conn) {
+        if (err) console.log("POOL /==> " + err);
+        conn.query(sql, function (err, result) {
+            var arr = [];
+            if (!err) {
+                for (var i = 0; i < result.length; i++) {
+                    arr.push({
+                        id: result[i].id,
+                        title: result[i].title,
+                        date: common.getFormatDate(result[i].create_time),
+                        url: result[i].url
+                    })
+                }
+            }
+            conn.query(sqlCount, function (err, count) {
+                var total = count[0]['COUNT(1)'] || 0;
+                common.result(res, conn, err, {list: arr, total: total})
+            })
+            
+        })
+    })
+})
+router.post('/admin/frienlyListAll',function(req, res){
+    var sql = "select * FROM friendly order by create_time desc";
+    pool.getConnection(function (err, conn) {
+        if (err) console.log("POOL /==> " + err);
+        conn.query(sql, function (err, result) {
+            common.result(res, conn, err, result)
+        })
+    })
+})
+// 友联修改
+router.post('/admin/app/friendlyUpdate',function(req, res){
+    var params = req.body;
+    var sqlUpdate = "UPDATE friendly SET url = '"+ params.url +"', title = '"+ params.title +"' WHERE id = " + params.id;
+    pool.getConnection(function (err, conn) {
+        if (err) console.log("POOL /==> " + err);
+        conn.query(sqlUpdate, function (err, result) {
+            common.result(res, conn, err, '')
+        })
+    })
+})
+
+// 友联添加
+router.post('/admin/app/addFriendly',function(req, res){
+    // var loginUser = req.session.loginUser;
+    // if (!loginUser || !loginUser.userName) {
+    //     res.json({code: 3301, message: '请重新登录'})
+    //     return;
+    // }
+    var params = req.body;
+    var sqList = "INSERT INTO friendly(title, url, create_time) VALUES ?";
+    var sqListInfo = [[params.title, params.url, new Date()]];
+    pool.getConnection(function (err, conn) {
+        conn.query(sqList, [sqListInfo], function (err, rows, fields) {
+            if (err) console.log("friendly /==> " + err);
+            common.result(res, conn, err, '')
+        })
+    })
+})
+
+// 删除友连
+router.post('/admin/app/deleteFriendly',function(req, res){
+    var sql = "DELETE from friendly WHERE id = " + req.body.id;
+    pool.getConnection(function (err, conn) {
+        if (err) console.log("friendly /==> " + err);
+        conn.query(sql, function (err, result) {
+            common.result(res, conn, err, '')
+        })
+    })
+})
+
+
 module.exports = router;
