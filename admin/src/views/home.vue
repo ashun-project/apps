@@ -181,7 +181,6 @@ export default {
             obj.downloadTotal = Number(obj.downloadTotal);
             obj.score = Number(obj.score);
             if(!obj.score) {
-                this.$message.err('请设置评分')
                 err = '请设置评分';
             }
             if (!obj.androidUrl && !obj.iosUrl ) {

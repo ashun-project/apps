@@ -35,6 +35,10 @@
               <i class="el-icon-setting"></i>
               <span slot="title">审核列表</span>
             </el-menu-item>
+            <el-menu-item index="/friendly">
+              <i class="el-icon-setting"></i>
+              <span slot="title">友情连接</span>
+            </el-menu-item>
             <el-menu-item index="/addbanner">
               <i class="el-icon-setting"></i>
               <span slot="title">添加轮播图</span>

@@ -6,6 +6,7 @@ import banner from '@/views/banner'
 import addbanner from '@/views/addbanner'
 import shenhe from '@/views/shenhe'
 import login from '@/views/login'
+import friendly from '@/views/friendly'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/shenhe',
       name: 'shenhe',
       component: shenhe
+    },
+    {
+      path: '/friendly',
+      name: 'friendly',
+      component: friendly
     },
     {
       path: '/',
