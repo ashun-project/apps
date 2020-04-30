@@ -300,7 +300,10 @@ router.post('/admin/app/frienlyList',function(req, res){
                 }
             }
             conn.query(sqlCount, function (err, count) {
-                var total = count[0]['COUNT(1)'] || 0;
+                var total = 0;
+                if (count && count[0]) {
+                    total = count[0]['COUNT(1)'];
+                }
                 common.result(res, conn, err, {list: arr, total: total})
             })
             
