@@ -43,6 +43,10 @@
               <i class="el-icon-setting"></i>
               <span slot="title">添加轮播图</span>
             </el-menu-item>
+             <el-menu-item index="/conf">
+              <i class="el-icon-setting"></i>
+              <span slot="title">系统管理</span>
+            </el-menu-item>
              <!-- <el-menu-item index="8">
               <i class="el-icon-setting"></i>
               <span slot="title">添加子帐号</span>

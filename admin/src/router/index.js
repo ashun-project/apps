@@ -7,6 +7,7 @@ import addbanner from '@/views/addbanner'
 import shenhe from '@/views/shenhe'
 import login from '@/views/login'
 import friendly from '@/views/friendly'
+import conf from '@/views/conf'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/',
       name: 'login',
       component: login
+    },
+    {
+      path: '/conf',
+      name: 'conf',
+      component: conf
     }
   ]
 })
