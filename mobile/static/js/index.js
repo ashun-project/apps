@@ -73,6 +73,20 @@ ajax({
   }
 })
 
+ajax({
+  type: "post",
+  url: "/api/conf",
+  data: {pageSize: 10},
+  success: function (response) {
+    var marquee = document.querySelector('#marquee');
+    var data = response.data[0] || {};
+    marquee.innerHTML = data.notice;
+  },
+  error: function () {    
+    console.log("error");
+  }
+})
+
 mui('.footer').on('tap','a',function(e){
   // var target = e.target;  
   // if(target.classList.contains('mui-action-back')){   

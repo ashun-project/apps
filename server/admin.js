@@ -360,5 +360,37 @@ router.post('/admin/app/deleteFriendly',function(req, res){
     })
 })
 
+// 获取配置
+router.post('/admin/app/conf',function(req, res){
+    var loginUser = req.session.loginUser;
+    if (!loginUser || !loginUser.userName) {
+        res.json({code: 3301, message: '请重新登录'})
+        return;
+    }
+    var sql = "select * FROM conf";
+    pool.getConnection(function (err, conn) {
+        if (err) console.log("friendly /==> " + err);
+        conn.query(sql, function (err, result) {
+            common.result(res, conn, err, result)
+        })
+    })
+})
+
+// 修改配置信息
+router.post('/admin/app/updateConf',function(req, res){
+    var loginUser = req.session.loginUser;
+    if (!loginUser || !loginUser.userName) {
+        res.json({code: 3301, message: '请重新登录'})
+        return;
+    }
+    var params = req.body;
+    var sqlUpdate = "UPDATE conf SET qq = '"+ params.qq +"', telegram = '"+ params.telegram +"', notice = '"+ params.notice +"' WHERE id = " + params.id;
+    pool.getConnection(function (err, conn) {
+        if (err) console.log("POOL /==> " + err);
+        conn.query(sqlUpdate, function (err, result) {
+            common.result(res, conn, err, '')
+        })
+    })
+})
 
 module.exports = router;

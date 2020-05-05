@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>收藏夹</title>
+    <link rel="stylesheet" href="./static/css/mui.min.css" />
+    <link rel="stylesheet" href="./static/fonts/fonts.css" />
+    <link rel="stylesheet" href="./static/css/history_download.css"/>
+    <script src="./static/js/ios_app.js"></script>
+  </head>
+  <body>
+      <style>
+          .history-title{
+            font-size: 16px;
+            color: #333;
+            float: right;
+            margin-top: 3px;
+            margin-left: 8px;
+            }
+          .tit{
+              font-size: 13px;
+              height: 50px;
+              line-height: 50px;
+              padding-left: 15px;
+              color: #4e4d4d;
+          }
+          .cont{
+              height: 100px;
+              line-height: 50px;
+              background: #fff;
+              padding-left: 15px;
+              color: #d03b3b;
+          }
+      </style>
+    <!-- header -->
+    <header class="mui-bar mui-bar-nav">
+      <a class="mui-action-back mui-icon mui-pull-left">
+        <i class="iconfont head-icon">&#xe611;</i>
+        <span class="history-title">联系方式</span>
+      </a>
+    </header>
+    <div style="height: 44px;"></div>
+    <div class="tit">联系QQ</div>
+    <div class="cont" id="qq">无</div>
+    <div class="tit">联系telegram</div>
+    <div class="cont" id="telegram">无</div>
+  </body>
+  <script src="./static/js/mui.min.js"></script>
+  <script src="./static/js/ajax.js"></script>
+  <script>
+      ajax({
+        type: "post",
+        url: "/api/conf",
+        data: {pageSize: 10},
+        success: function (response) {
+            var qq = document.getElementById('qq');
+            var telegram = document.getElementById('telegram');
+            var data = response.data[0] || {};
+            qq.innerHTML = data.qq;
+            telegram.innerHTML = data.telegram;
+        },
+        error: function () {    
+            console.log("error");
+        }
+    })
+  </script>
+</html>

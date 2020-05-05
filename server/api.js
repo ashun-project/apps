@@ -391,4 +391,16 @@ router.post('/download', (req, res) => {
     })
 })
 
+// 获取配置
+router.post('/conf',function(req, res){
+    var sql = "select * FROM conf";
+    pool.getConnection(function (err, conn) {
+        if (err) console.log("conf /==> " + err);
+        conn.query(sql, function (err, result) {
+            common.result(res, conn, err, result)
+        })
+    })
+})
+
+
 module.exports = router;

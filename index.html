@@ -462,8 +462,14 @@
           <div class="contact fr">
             <div class="act-num">
               <h3>联系我们</h3>
-              <p><span>QQ&nbsp;:</span><a href="http://wpa.qq.com/msgrd?v=3&uin=***1&site=qq&menu=yes">***</a></p>
-              <p><span>telegram&nbsp;:</span><a href="https://t.me/ashun8">***</a></p>
+              <p style="margin-bottom: 11px;"><span>QQ&nbsp;:</span>
+                <!-- <a href="http://wpa.qq.com/msgrd?v=3&uin=***1&site=qq&menu=yes">***</a> -->
+                <span id="qq">无</span>
+              </p>
+              <p><span>telegram&nbsp;:</span>
+                <!-- <a href="https://t.me/ashun8">***</a> -->
+                <span id="telegram">无</span>
+              </p>
             </div>
             <div>
               <img src="./static/img/qr.png" alt="">
@@ -504,6 +510,20 @@
             str = '暂无'
           }
           links.innerHTML = str;
+        }).catch(err => {
+          // alert(err);
+        })
+        fetch('/api/conf', {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'POST'
+        }).then(res => res.json()).then((result) => {
+          var qq = document.getElementById('qq');
+          var telegram = document.getElementById('telegram');
+          var data = result.data[0] || {};
+          qq.innerHTML = data.qq;
+          telegram.innerHTML = data.telegram;
         }).catch(err => {
           // alert(err);
         })
